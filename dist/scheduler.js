@@ -1,5 +1,5 @@
 /*!
- * FullCalendar Scheduler v0.0.0
+ * FullCalendar Scheduler v0.0.1
  * Docs & License: https://fullcalendar.io/scheduler/
  * (c) 2018 Adam Shaw
  */
@@ -1751,6 +1751,9 @@ var RowParent = /** @class */ (function (_super) {
             this.thisRowShown();
         }
         this.set('isInDom', true);
+        if (this['resource']) {
+            this.isExpanded = this['resource'].isExpanded;
+        }
         if (this.isExpanded) {
             for (var _i = 0, _a = this.children; _i < _a.length; _i++) {
                 var child = _a[_i];
@@ -1831,6 +1834,14 @@ var RowParent = /** @class */ (function (_super) {
         else {
             this.expand();
         }
+        this.view.publiclyTrigger('toggleExpanded', {
+            context: this['resource'],
+            args: [
+                this.isExpanded,
+                this['resource'],
+                this.view
+            ]
+        });
     };
     /*
     Changes the expander icon to the "expanded" state
@@ -3916,7 +3927,7 @@ __webpack_require__(65);
 __webpack_require__(66);
 __webpack_require__(67);
 __webpack_require__(68);
-var schedulerVersion = '0.0.0';
+var schedulerVersion = '0.0.1';
 exportHooks.schedulerVersion = schedulerVersion;
 /*
 When the required internal version is upped,

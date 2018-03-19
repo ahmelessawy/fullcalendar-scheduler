@@ -285,6 +285,9 @@ export default class RowParent extends DateComponent {
 
     this.set('isInDom', true)
 
+    if (this['resource']) {
+      this.isExpanded = this['resource'].isExpanded
+    }
     if (this.isExpanded) {
       for (let child of this.children) {
         child.renderSkeleton()
@@ -378,6 +381,14 @@ export default class RowParent extends DateComponent {
     } else {
       this.expand()
     }
+    this.view.publiclyTrigger('toggleExpanded', {
+      context: this['resource'],
+      args: [
+        this.isExpanded,
+        this['resource'],
+        this.view
+      ]
+    })
   }
 
   /*
@@ -415,8 +426,8 @@ export default class RowParent extends DateComponent {
     this.trs.find('.fc-expander-space')
       .removeClass('fc-expander')
       .find('.fc-icon')
-        .removeClass(this.getExpandedIcon())
-        .removeClass(this.getCollapsedIcon())
+      .removeClass(this.getExpandedIcon())
+      .removeClass(this.getCollapsedIcon())
   }
 
 

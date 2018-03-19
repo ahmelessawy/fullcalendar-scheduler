@@ -1,5 +1,5 @@
 /*!
- * FullCalendar Scheduler v0.0.1
+ * FullCalendar Scheduler v0.0.2
  * Docs & License: https://fullcalendar.io/scheduler/
  * (c) 2018 Adam Shaw
  */
@@ -3927,7 +3927,7 @@ __webpack_require__(65);
 __webpack_require__(66);
 __webpack_require__(67);
 __webpack_require__(68);
-var schedulerVersion = '0.0.1';
+var schedulerVersion = '0.0.2';
 exportHooks.schedulerVersion = schedulerVersion;
 /*
 When the required internal version is upped,
